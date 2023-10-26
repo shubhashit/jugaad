@@ -1,23 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
-
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import { userData } from './components/context/usercontext';
+import { useContext, useState } from 'react';
+import LandingPage from './components/LandingPage';
 function App() {
+  const [currentUser , setcurrentUser] = useState(null);
+  console.log(currentUser)
+  console.log(localStorage)
+
+  const ProtectedRoute = ({ children }) => {
+    if (currentUser === null) {
+      console.log('navigation to login page');
+      return (<Navigate to="/signin"></Navigate>)
+    }
+    return children
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="md:mr-96 md:ml-96 md:border-2  ">
+      <userData.Provider value={{ currentUser, setcurrentUser }}>
+        <Router>
+          <Routes>
+            <Route path='/' element={<ProtectedRoute> <LandingPage></LandingPage> </ProtectedRoute>} />
+            <Route exact path="/signin" element={<SignIn></SignIn>} />
+            <Route exact path="/signup" element={<SignUp ></SignUp>} />
+          </Routes>
+        </Router>
+      </userData.Provider>
     </div>
   );
 }

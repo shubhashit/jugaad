@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +14,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.bgbutton{
+background: rgb(63, 83, 207);
+  background: linear-gradient(90deg, rgba(63, 83, 207, 1) 0%, rgba(78, 57, 181, 1) 23%, rgba(83, 40, 185, 1) 50%, rgba(174, 0, 196, 1) 100%);
+}
+
+.gradbg{
+  background: rgb(100, 109, 164);
+    background: linear-gradient(165deg, rgba(100, 109, 164, 1) 0%, rgba(35, 42, 96, 1) 37%, rgba(5, 5, 18, 1) 100%);
+}
+.gradbgR{
+  background: rgb(48, 58, 119);
+    background: linear-gradient(165deg, rgba(48, 58, 119, 1) 0%, rgba(20, 27, 82, 1) 37%, rgba(5, 5, 18, 1) 100%);
 }
