@@ -25,7 +25,7 @@ function App() {
 
 
   return (
-    <div className="md:mr-96 md:ml-96 md:border-2  ">
+    <div className="overflow-x-hidden">
       <userData.Provider value={{ currentUser, setcurrentUser }}>
         <Router>
           <Routes>
